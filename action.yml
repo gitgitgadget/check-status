@@ -1,0 +1,48 @@
+name: gitgitgadget-action-check-status
+author: webstech
+description: >
+  This is a GitHub action to perform various scheduled actions with projects
+  using gitgitgadget to submit changes.  It is used as a scheduled action
+  running in a separate repo or the repo it is acting upon.  The use case
+  is for repos that will not allow complex GitHub actions in the codebase
+  when the GitHub repo is a clone that is used to submit updates to a
+  non-GitHub maintained repo.
+
+inputs:
+  action:
+    description: >
+      The action to be performed.  It must be one of the following:
+      "update-open-prs",
+      "update-commit-mappings",
+      "handle-open-prs",
+      "handle-new-mails".
+    required: true
+  repo-owner:
+    description: Repository owner.
+    required: true
+  repo-name:
+    description: Repository name.
+    required: true
+  token:
+    description: A repo scoped GitHub Personal Access Token.
+    required: true
+  repository-dir:
+    description: The location of the repository.
+    required: true
+  config-repository-dir:
+    description: The location of the repository with gitgitgadget configuration
+      information.  This would be used in place of the `config` parameter for
+      the `git` repository.  This is normally the gitgitgadget repo with any
+      needed configuration settings.  Most users will specify a `config`.
+    required: false
+  config:
+    description: JSON configuration for commands.
+    required: true
+
+runs:
+  using: 'node18'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'check'
+  color: 'gray-dark'
