@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": [
+      "es6"
+    ],
+    "outDir": "./build",
+    "rootDir": "./src",
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true
+  },
+  "include": [
+    "src/*.ts",
+    ".eslintrc.js",
+  ]
+}
